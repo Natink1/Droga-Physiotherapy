@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_Prescription_report_pdf" model="ir.actions.report">
+        <field name="name">Prescription Report</field>
+        <field name="model">prescription.paitent</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Saco.Prescription_pdf_report</field>
+        <field name="report_file">Saco.Prescription_pdf_report</field>
+        <field name="binding_model_id" ref="model_prescription_paitent"/>
+        <field name="binding_type">report</field>
+    </record>
+
+   
+        <template id="Prescription_pdf_report">
+            <t t-call="web.basic_layout">
+                
+                    <div class="page">
+                        <h1>Report Title</h1>
+                        <p>This is a sample report.</p>
+                         <tbody>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td><t t-esc="doc.prescriber"/></td>
+                            <td><t t-esc="doc.medication"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+                    </div>
+               
+            </t>
+        </template>
+
+
+</odoo>

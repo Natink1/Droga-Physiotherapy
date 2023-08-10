@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="droga_physio_view_tree" model="ir.ui.view">
+        <field name="name">droga.physio.view.tree</field>
+        <field name="model">droga.physio</field>
+        <field name="arch" type="xml">
+            <tree >
+            <field name="full_name" />
+            <field name="sex" optional="unshow"/>   
+            <field name="age" optional="unshow"/>
+            <field name="birth_date"  optional="unshow"/>
+            <field name="register_date" />
+            <field name="phone" optional="show"/>
+            
+            <field name="city"  optional="unshow"/>   
+            <field name="subcity"  optional="unshow"/>     
+            <field name="wereda" />
+         
+            <field name="office_tel" />
+            <field name="refered_by" />
+            <field name="house_no"  optional="unshow"/>
+            <field name="tin_no" />
+
+
+
+           
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="droga_physio_view_form" model="ir.ui.view">
+        <field name="name">droga.physio.view.form</field>
+        <field name="model">droga.physio</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                 <div class="oe_title">
+                    <h1>
+                        <field name="sequence_no" readonly="1"/>
+                    </h1>
+                 </div>
+                <!-- <div>
+                                Individual
+                                <field name="is_individual"/>
+
+                                Company
+                                <field name="is_company"/>
+                 </div> -->
+                    <group>
+                    
+                        <group string="Patient Information" >
+                     
+                                    <field name="full_name" />
+                                    <field name="sex" optional="unshow"/>   
+                                    <field name="age" optional="unshow"/>
+                                    <field name="birth_date"  optional="unshow"/>
+                                    <field name="register_date" />
+                                    
+                                    
+                        </group>
+
+                        <group  string="Address" col="2">
+
+                          <group>
+                            <field name="phone" wedget="phone" />
+                           
+                            <field name="city" />
+                            <field name="subcity" optional="show"/>
+                            <field name="wereda" />
+                          </group>
+                          <group>
+                            
+                            <field name="office_tel" />
+                            <field name="refered_by" />
+                            <field name="house_no" />
+                            <field name="tin_no" />
+
+                          </group>
+
+
+                        </group>
+                      
+                        
+                    </group>
+
+                    <notebook>
+                        <page string="Sesstion" >
+                   
+                            <field name="notebook_ids_sesstion">
+                                <tree editable='top' >
+                                        
+                                        
+                                        <field name="time"/>
+                                        <field name="appointed_to"/>
+                                        <field name="remark"/> 
+                                        <field name="price"/>
+                                        <field name="paid_Amount"/>
+                                        <field name="condition"/>
+                                       
+                                        <field name="Service_Type"/>
+                                      
+                                        
+                                        <field name="employee_name"  optional='hide'/>
+                                        <field name="employee_id" optional='hide'/>
+                                        <field name="profession" optional='hide'/>
+                                        <field name="birth_date" optional='hide'/>
+                                        <field name="age" optional='hide'/>
+                                        <field name="sex" optional='hide'/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        
+                       
+                    </notebook>
+                     <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+                
+            </form>
+             
+        </field>
+    </record>
+
+    <record id="droga_physio_action" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">droga.physio</field>
+        <field name="view_mode">tree,form,pivot</field>
+        
+        <field name="target">current</field>
+    </record>
+
+
+    <menuitem
+        id="droga_physio"
+        name="Droga Physio"
+        sequence="1"/>
+
+    <!-- <menuitem
+        id="droga_physio_menu"
+        name="Patients"
+        action="droga_physio_action"
+        parent="droga_physio"
+        sequence="5"/>  -->
+    
+    
+
+     <!-- customer -->
+
+    <record id="customer_class_view_form" model="ir.ui.view">
+        <field name="name">customer.class.view.form</field>
+        <field name="model">customer.class</field>
+        <field name="arch" type="xml">
+            <form>
+           
+                <sheet>
+
+                <div class="oe_title">
+                    <h1>
+                        <field name="sequence_no" readonly="1"/>
+                    </h1>
+                 </div>
+
+                    <!-- <div>
+                                Individual
+                                <field name="is_individual"/>
+
+                                Company
+                                <field name="is_company"/>
+                 </div> -->
+
+                 <group  string="" col="2">
+                    <group >
+                    <field name="company_name" />
+                    <field name="company_grade"/>
+                    <field name="tin_no" />
+                    </group>
+                    <group >
+                        <field name="area" />
+                        <field name="location" />
+                        <field name="phone" />
+                        <field name="mobile" />
+                        
+                    </group>
+                 </group>
+                    
+                     <notebook>
+                          <page string="Members" >
+                   
+                            <field name="droga_physio_id" />
+                        </page>
+                    </notebook>
+          
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                    </div>
+                </sheet>
+                 
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_class_view_tree" model="ir.ui.view">
+        <field name="name">customer.class.view.tree</field>
+        <field name="model">customer.class</field>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="company_name" />
+                        <field name="company_grade"/>
+                        <field name="tin_no" />
+                        <field name="area" />
+                        <field name="location" />
+                        <field name="phone" />
+                        <field name="mobile" />
+                        
+                       
+                                        
+            </tree>
+        </field>
+    </record>
+
+    <record id="customer_class_action" model="ir.actions.act_window">
+        <field name="name">Company</field>
+        <field name="res_model">customer.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+
+    <menuitem
+        id="customer_menu"
+        name="Customer"
+        parent="droga_physio"
+        action="customer_class_action"
+        sequence="1"/>
+    <menuitem
+        id="droga_physio_menu_sub"
+        name="Members"
+        action="droga_physio_action"
+        parent="customer_menu"
+        sequence="90"/>
+    <menuitem
+        id="droga_physio_menu_sub2"
+        name="Company Customer"
+        action="customer_class_action"
+        parent="customer_menu"
+        sequence="90"/>  
+   
+
+    
+
+        <!-- Maria code -->
+
+
+        <record id="appointment_set_tree" model="ir.ui.view"> 
+        <field name="name">appointment.set.tree</field> 
+        <field name="model">appointment.set</field> 
+        <field name="arch" type="xml"> 
+            <tree string=""> 
+                <field name="start_date" /> 
+                <field name="clinician1" /> 
+                <field name="end_date" />     
+                <field name="mrn" />     
+                <field name="name" />     
+            </tree> 
+        </field> 
+    </record> 
+     
+    <record id="appointment_set_form" model="ir.ui.view"> 
+        <field name="name">schedule.set.form</field> 
+        <field name="model">appointment.set</field> 
+        <field name="arch" type="xml"> 
+            <form string=""> 
+                <sheet> 
+                <group> 
+                <field name="mrn" /> 
+                <field name="start_date" /> 
+                <field name="end_date" />   
+                <field name="clinician1" /> 
+                </group> 
+         
+                </sheet> 
+            </form> 
+        </field> 
+    </record> 
+    <record id="appointment_set_action" model="ir.actions.act_window"> 
+        <field name="name">Appointment</field> 
+        <field name="res_model">appointment.set</field> 
+        <field name="view_mode">tree,form</field> 
+    </record> 
+
+    <menuitem 
+        id="schedule_menu" 
+        name="Schedule" 
+        action="appointment_set_action" 
+        parent="droga_physio" 
+        sequence="10"/>  
+
+
+    <record id="prescription_patient_view_tree" model="ir.ui.view"> 
+        <field name="name">prescription.patient.view.tree</field> 
+        <field name="model">prescription.paitent</field> 
+        <field name="arch" type="xml"> 
+            <tree string="" > 
+            <field name="prescriber" />     
+            <field name="medication" />     
+            <field name="frequency" />     
+            <field name="start_date" />     
+            <field name="date_ordered" />     
+            <field name="route" />     
+            <field name="stop_date" />     
+            <field name="remark" />   
+            <field name="birth_date" /> 
+            <field name="age" /> 
+            </tree> 
+        </field> 
+    </record> 
+    <record id="prescription_patient_view_form" model="ir.ui.view"> 
+        <field name="name">prescription.paitent.view.form</field> 
+        <field name="model">prescription.paitent</field> 
+        <field name="arch" type="xml"> 
+            <form> 
+                <sheet> 
+                <group> 
+                
+                    <group string="Basic Info"> 
+                        <field name="prescriber" optional="hide"/>
+                        <field name="patient" />     
+                        <field name="medication" optional="hide"/>     
+                        <field name="frequency" />     
+                        <field name="route" />  
+                        <field name="remark" optional="hide"/>   
+                    </group> 
+                    <group string= "Time"> 
+                        <field name="start_date" optional="hide"/>     
+                        <field name="date_ordered"/>     
+                        <field name="stop_date" optional="hide"/>     
+                        <!-- <field name="birth_date" /> 
+                        <field name="age" /> --> 
+                      
+                    </group> 
+                </group> 
+                  
+        
+                </sheet> 
+            </form> 
+        </field> 
+    </record> 
+    <record id="prescription_patient_action" model="ir.actions.act_window"> 
+        <field name="name">Prescription </field> 
+        <field name="res_model">prescription.paitent</field> 
+        <field name="view_mode">tree,form</field> 
+    </record> 
+
+     <record id="prescription_patient_action" model="ir.actions.act_window"> 
+        <field name="name">Prescription</field> 
+        <field name="res_model">prescription.paitent</field> 
+        <field name="view_mode">tree,form</field> 
+    </record> 
+     
+         
+            <menuitem 
+                id="prescription_patient_menu" 
+                name="Patient" 
+                action="prescription_patient_action" 
+                parent="droga_physio" 
+                sequence="10"/> 
+
+
+    
+    <!-- <record id="reminder_set_view_tree" model="ir.ui.view"> 
+        <field name="name">set.reminder.view.tree</field> 
+        <field name="model">set.reminder</field> 
+        <field name="arch" type="xml"> 
+            <tree string=""> 
+            <field name="date"/> 
+            <field name="name"/> 
+            <field name="appointed"/> 
+            <field name="mrn"/> 
+            <field name="reason"/> 
+            </tree>  
+        </field>  
+    </record>  -->
+ <record id="reminder_set_view_calander" model="ir.ui.view"> 
+        <field name="name">reminder.set.view.cal</field> 
+        <field name="model">set.reminder</field> 
+        <field name="arch" type="xml"> 
+            <calendar string="Reminder" date_start="date">
+
+                <field name="appointed" />
+                    
+            </calendar>
+        </field> 
+    </record>   
+    <record id="reminder_set_view_form" model="ir.ui.view"> 
+                <field name="name">set.reminder.view.form</field> 
+                <field name="model">set.reminder</field> 
+                <field name="arch" type="xml"> 
+                    <form> 
+                        <sheet> 
+                            <group string="information">
+
+    <group string="testing group string"> 
+                                <field name="date"/> 
+                                <field name="reason"/> 
+                                <field name="name"/> 
+                            </group> 
+                            <group string="Info"> 
+                            <field name="appointed"/> 
+                                <field name="mrn"/> 
+                                </group> 
+                            </group>  
+                             
+                            <!-- <notebook> 
+                                    <page string="Prescription date" name="prescription date"> 
+                                    <group> 
+                                    <field name="name"/> 
+                                    <field name="date"/> 
+                                    <field name="mrn"/> 
+                                    </group> 
+                                    </page> 
+                                    <page string="Schedule" name="schedule"> 
+                                    <group> 
+                                    <field name="name"/> 
+                                    </group> 
+                                    </page> 
+                                </notebook>  -->
+                        </sheet> 
+                    </form> 
+                </field> 
+    </record> 
+    <record id="reminder_set_action" model="ir.actions.act_window"> 
+                <field name="name">Set reminder</field> 
+                <field name="res_model">set.reminder</field> 
+                <field name="view_mode">tree,form,calendar</field> 
+    </record> 
+   
+           <menuitem 
+                id="Reminder_set_menu2" 
+                name="Appointment Reminder" 
+                action="reminder_set_action" 
+                parent="droga_physio" 
+                sequence="50"/> 
+
+
+
+                                 
+</odoo>
