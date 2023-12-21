@@ -7,17 +7,31 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                    <field name="date"/>
-                    <!-- <field name="clinicians" /> -->
-                    <field name="sessions" />
-                    <field name="diagnosis" />
-                    <field name="recommendation"/>
-           
+                 <group>
+                    <group  string="Basic Data">
+                        <field name="mrn"/>
+                        <field name="date"/>
+                        <field name="full_name" />
+                        <field name="age"/>
+                        <field name="birth_date"/>
+                        <field name="sex"/>
+                        
                     </group>
+                    
+                    <group  string="Medical Data">
+                        <field name="diagnosis" />
+                        <field name="recommendation"/>
+                        <field name="rest_required"/>
+                        <field name="time_1" />
+                    </group>
+        
+                     
+                    </group>
+                 
                 </sheet>
             </form>
         </field>
+        
     </record>
     
     <record id="droga_medicalcertifcates_tree" model="ir.ui.view">
@@ -25,9 +39,11 @@
         <field name="model">droga.medicalcertifcates</field>
         <field name="arch" type="xml">
             <tree string="Medical Certifcates">
+                <field name="mrn"/>
+                <field name="full_name" />
                 <field name="date"/>
                 <!-- <field name="clinicians" /> -->
-                <field name="sessions"/>
+                <!-- <field name="sessions"/> -->
                 
             </tree>
         </field>
@@ -39,10 +55,10 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem
+   <menuitem
         id="droga_medicalcertifcates_menu"
         name="Medical Certifcates"
         action="droga_medicalcertifcates_action"
-        parent="droga_physio"
-        sequence="30" />
+        parent="forms_menu"
+        sequence="90" />
 </odoo>
