@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+         <record id="examination_form_view_tree_appointment" model="ir.ui.view">
+        <field name="name">examination.form.view.tree</field>
+        <field name="model">examination.form</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                    <field name="mrn" /> 
+                    <field name="patient_name"/>
+                    <!-- <field name="phone" />	     -->
+                    <field name="date" />     
+                    <field name="clinician1" /> 
+                    
+                    
+            </tree>
+        </field>
+    </record>   
+
+<record id="examination_form_view_form_appointment" model="ir.ui.view">
+    <field name="name">examination.form.view.form</field>
+    <field name="model">examination.form</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                <group >
+                    <field name="mrn" />
+                    <field name="patient_name"/>    
+                      
+                         
+                </group>
+                <group >
+                <field name="clinician1" />
+                                    </group>
+
+                
+                </group>
+
+        <notebook>
+            <page string="Appointment">
+                <field name="appo" widget="form">
+                    <tree editable='top'>
+
+                    <field name="mrn" />
+                    <field name="clincian"/>  
+                    <field name="start_date"/>
+                    
+
+                    
+                    
+                    </tree>
+                    </field>
+            </page>
+             
+
+        </notebook>
+  
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                    </div>
+    
+            </sheet>
+            
+        </form>
+   
+   
+   
+    </field>
+</record> 
+
+<record id="examination_form_appointment_action" model="ir.actions.act_window">
+    <field name="name">Appointment</field>
+    <field name="res_model">examination.form</field>
+    <field name="view_mode">tree,form</field> 
+    
+    <field name="views" eval="[(0, 0, {'view_mode': 'tree', 'view_id': ref('examination_form_view_tree_appointment')}), (0, 0, {'view_mode': 'form', 'view_id': ref('examination_form_view_form_appointment')})]"/>
+</record>
+
+ <menuitem
+        id="model_name_menu"
+        name="Appointment"
+        action="examination_form_appointment_action"
+       
+        parent="schedule_menu"
+        sequence="10"/>
+    
+
+</odoo>

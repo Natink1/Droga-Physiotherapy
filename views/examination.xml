@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="examination_form_view_tree" model="ir.ui.view">
+        <field name="name">examination.form.view.tree</field>
+        <field name="model">examination.form</field>
+        <field name="arch" type="xml">
+            <tree string="" create="0">
+                    <field name="mrn" />     
+                    <field name="date" />     
+                    <field name="clinician1" />  
+                    
+            </tree>
+        </field>
+    </record>   
+
+<record id="examination_form_view_form" model="ir.ui.view">
+    <field name="name">examination.form.view.form</field>
+    <field name="model">examination.form</field>
+    <field name="arch" type="xml">
+        <form string="" create="0">
+
+          
+            <sheet>
+             <div class="oe_button_box" name="button_box">
+            
+                <button string="Investigation Form" name="open_investigation" type="object" class="oe_highlight"/>
+                <button string="Medical Certificate Form" name="open_medical" type="object" class="oe_highlight"/>
+                <button string="Referal Form" name="referal_form" type="object" class="oe_highlight"/>
+
+             </div>
+   
+
+                <group>
+                <group string="Information">
+                    <field name="mrn" readonly="1"/>
+                    <field name="patient_name" readonly="1"/>    
+                    <field name="date" />     
+                    <field name="clinician1" readonly="1" />     
+                </group>
+                <group string="Medical Information">
+                    <field name="cc" />     
+                    <field name="hpi" />     
+                    <field name="rpmh" />     
+                    <field name="dignostics_imaging_finding" />
+                    <field name="observation" />
+                </group>
+
+                <group string="_">
+                    <field name="palpation" />     
+                    <field name="rom" />     
+                    <field name="lld" />     
+                    <field name="mmt" />
+                    <field name="reflex" />
+                </group>
+                <group string="_">
+                    <field name="sensory" />     
+                    <field name="special_test" />     
+                    <field name="function" />     
+                    <field name="pt" />
+                    <field name="treatment" />
+                </group>
+                </group>
+
+        <notebook>
+            <page string="Appointment">
+                <field name="appo" widget="form" readonly="1">
+                    <tree editable='top'>
+
+                    <field name="mrn" />
+                    <field name="clincian"/>  
+                    <field name="start_date"/>
+                    
+
+                    
+                    
+                    </tree>
+                    </field>
+            </page>
+              <page string="Prescription">
+            <field name="pre_session">
+            <tree editable='top'>
+
+            <field name="drug_name" />
+            <field name="price"/>  
+            
+            </tree>
+            </field>
+            </page>
+
+        </notebook>
+
+    
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                    </div>
+            </sheet>
+            
+        </form>
+   
+   
+   
+    </field>
+</record>     
+<record id="examination_form_action" model="ir.actions.act_window">
+    <field name="name">Examination</field>
+    <field name="res_model">examination.form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('clinician1.user_id', '=', uid)]</field> 
+</record>  
+<record id="examination_form_action_tree" model="ir.actions.act_window.view">
+    <field name="sequence" eval="1"/>
+    <field name="view_mode">tree</field>
+    <field name="act_window_id" ref="examination_form_action"/>
+    <field name="view_id" ref="examination_form_view_tree"/>
+</record>
+<record id="examination_form_action_form" model="ir.actions.act_window.view">
+    <field name="sequence" eval="2"/>
+    <field name="view_mode">form</field>
+    <field name="act_window_id" ref="examination_form_action"/>
+    <field name="view_id" ref="examination_form_view_form"/>
+</record>
+<menuitem
+        id="examination_menu"
+        name="Examination Form"
+        action="examination_form_action"
+        parent="droga_physio" 
+        sequence="3"/>
+
+</odoo>

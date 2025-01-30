@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="examination_form_view_form2" model="ir.ui.view">
+        <field name="name">examination.form.view.form2</field>
+        <field name="model">examination.form</field>
+        <field name="arch" type="xml">
+            <form string="">
+            
+                <sheet>
+                    <group>
+                    
+                    <field name="mrn" create="false" readonly="true" />
+                    <field name="patient_name" create="false" readonly="true"  />
+                    <field name="sex" create="false" readonly="true" />
+                    <field name="age" create="false" readonly="true" />
+                    <field name="weight" create="false" readonly="true" />
+                    <field name="Diagnosis" create="false" readonly="true" />
+                    <field name="clinician1" create="false" readonly="true" />
+                    </group>
+                    <notebook>
+            
+
+         <page string="Prescriptions">
+            <field name="pre_session" readonly="true" create="false">
+            <tree >
+
+            <field name="drug_name"/>
+            <field name="price"/>  
+            
+            </tree>
+            </field>
+            </page>
+        </notebook>
+          
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="examination_form_view_tree2" model="ir.ui.view">
+        <field name="name">examination.form.view.tree2</field>
+        <field name="model">examination.form</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                    <field name="mrn"  />
+                    <field name="patient_name"  />
+                    <field name="clinician1" />
+            </tree>
+        </field>
+    </record>
+<record id="examination_form_action2" model="ir.actions.act_window">
+    <field name="name">Prescription</field>
+    <field name="res_model">examination.form</field>
+    <field name="view_mode">tree,form</field>
+  <!--  <field name="view_id" ref="examination_form_view_form2"/>
+    <field name="context">{"form_view_ref": "examination_form_view_form2"}</field>-->
+</record>
+
+<record id="examination_form_action2_tree" model="ir.actions.act_window.view">
+    <field name="sequence" eval="1"/>
+    <field name="view_mode">tree</field>
+    <field name="act_window_id" ref="examination_form_action2"/>
+    <field name="view_id" ref="examination_form_view_tree2"/>
+</record>
+<record id="examination_form_action2_form" model="ir.actions.act_window.view">
+    <field name="sequence" eval="2"/>
+    <field name="view_mode">form</field>
+    <field name="act_window_id" ref="examination_form_action2"/>
+    <field name="view_id" ref="examination_form_view_form2"/>
+</record>
+
+<menuitem 
+                id="prescription_patient_menu" 
+                name="Prescription" 
+                action="examination_form_action2" 
+                parent="droga_physio" 
+                sequence="5"/>
+
+</odoo>
